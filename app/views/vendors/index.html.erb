@@ -1,0 +1,10 @@
+<h1>Here are all the vendors in MARVL</h1>
+
+
+<ul>
+  <% @vendors.each do |vendor| %>
+    <p>
+      <%= link_to vendor.name, vendor %>
+    </p>
+  <% end %>
+</ul>

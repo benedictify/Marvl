@@ -1,3 +1,4 @@
+
 ActiveRecord::Base.establish_connection
 ActiveRecord::Base.connection.tables.each do |table|
   next if table == 'schema_migrations'
@@ -18,3 +19,9 @@ admin = Role.create name: "Admin"
 
 coop.add_role(admin.id)
 fake.add_role(member.id)
+
+10.times do
+  Vendor.create!(name: Faker::Company.name, street_address: "8900 Georgia Ave", city: "Silver Spring", state: "MD", zip_code: "20910", phone: "(301) 555-1215")
+end
+
+

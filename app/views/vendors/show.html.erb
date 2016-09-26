@@ -1,0 +1,23 @@
+<h1>Here is the page for <%= @vendor.name %>!</h1>
+
+<% if admin? %>
+  <%= link_to "manage vendors", admin_vendors_path %>
+<% end %>
+
+
+<h3>Address: <%= @vendor.street_address %>, <%= @vendor.city %>, <%= @vendor.state %>, <%= @vendor.zip_code %></h3>
+<h3>Phone: <%= @vendor.phone %></h3>
+<h3>Email: <%= %></h3>
+<h3>Website: <%= %></h3>
+
+
+<% if @reviews.length > 0 %>
+	<h3>Recent Reviews</h3>
+	<div class = "reviews">
+		<% @reviews.each do |review| %>
+		<%= review.vendor %><br>
+		<%= link_to review.title, review %><br>
+		<%= review.content %><br><br>
+	<%end%>
+	</div>
+<% end %>
