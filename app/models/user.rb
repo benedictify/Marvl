@@ -27,12 +27,12 @@ class User < ApplicationRecord
   end
 
   def ambassador?
-    ambassador = Role.find_by name: 'Ambassador'
+    ambassador = self.roles.find_by name: 'Ambassador'
     self.roles.include? ambassador
   end
 
   def member?
-    member = Role.find_by name 'Member'
+    member = self.roles.find_by name: 'Member'
     self.roles.include? member
   end
 

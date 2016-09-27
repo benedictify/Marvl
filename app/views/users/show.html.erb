@@ -4,6 +4,8 @@
 	<% end %>
 </h1>
 
+
+
 <% if admin? %>
   <%= link_to "Manage Users", admin_users_path %>
   <% unless @user.is_admin? %>
@@ -11,6 +13,13 @@
 	  <%= hidden_field_tag "user_id", @user.id %>
 	  <%= f.submit "Make #{@user.full_name} Admin" %>
 	 	<% end %>
+	<% end %>
+	<% unless @user.member? %>
+	<p><%=@user.full_name%>'s membership is currently pending</p>
+		<%= form_for @roles, url: url_for(controller: "roles", action: "member") do |f| %>
+		<%= hidden_field_tag "user_id", @user.id %>
+		<%= f.submit "Approve Membership" %>
+		<% end %>
 	<% end %>
 <% end %>
 

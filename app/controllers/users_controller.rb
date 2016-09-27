@@ -48,6 +48,7 @@ class UsersController < ApplicationController
       @user.organisation_id = @organisation.id
     end
     if @user.save
+      Privacy.create(user_id: @user.id)
       redirect_to root_path
       flash[:new] = "An administrator will notify you when your account has been confirmed"
     else
