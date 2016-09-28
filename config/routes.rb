@@ -11,9 +11,9 @@ Rails.application.routes.draw do
   get '/forum', to: 'posts#forum'
   get '/documents/:id/download', to: 'documents#download', as: :download
 
-  resources :users do
-    resources :documents, only: [:new, :create, :index, :show]
-  end
+  resources :users 
+
+  resources :documents, only: [:new, :create, :index, :show]
 
   resources :roles, only: [:new, :create]
 

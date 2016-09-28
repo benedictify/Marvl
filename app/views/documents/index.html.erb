@@ -16,11 +16,11 @@
 				<%= document.name %>
 			</div>
 			<div>
-				<%= link_to "view document", user_document_path(@user, document) %>
+				<%= link_to "view document", document_path(document) %>
 			</div>
 		</div>
 	<% end %>
 </div>
 
-<%= link_to "Upload a new document", new_user_document_path %> | 
+<%= link_to "Upload a new document", new_document_path %> | 
 <%= link_to "Back to your profile", user_path(@user) %>

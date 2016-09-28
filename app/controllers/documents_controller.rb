@@ -2,8 +2,13 @@ class DocumentsController < ApplicationController
 
 	# form to upload a new document
 	def new
-		@user = current_user
-		@document = @user.documents.new
+		if logged_in?
+			@user = current_user
+			@document = @user.documents.new
+		else
+			flash[:access] = "Unauthorized access, please contact an administrator if you believe this error is incorrect."
+			redirect_to '/'
+		end
 	end
 
 	# create action for new document
@@ -11,7 +16,7 @@ class DocumentsController < ApplicationController
 		@user = current_user
 		@document = @user.documents.new(doc_params)
 		if @user.save
-			redirect_to user_documents_path
+			redirect_to documents_path
 		else
 			@errors = @user.errors.full_messages + @document.errors.full_messages
 			render "new"
