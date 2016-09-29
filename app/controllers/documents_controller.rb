@@ -25,12 +25,13 @@ class DocumentsController < ApplicationController
 
 	# show all documents uploaded for one user
 	def index
-		if logged_in?
-			@user = current_user
+		@user = current_user
+		if admin? 
+			@documents = Document.all
+		elsif logged_in?
 			@documents = @user.documents
 		else
       flash[:access] = "Unauthorized access, please contact an administrator if you believe this error is incorrect."
-      # can change to redirect root_path once we have established what that is
       redirect_to '/'
     end
 	end
@@ -39,8 +40,19 @@ class DocumentsController < ApplicationController
 	def show
 		@user = current_user
 		doc = Document.find(params[:id])
-		if logged_in? && @user.documents.include?(doc)
+		if admin? || (logged_in? && @user.documents.include?(doc))
 			@document = doc
+		else
+			flash[:access] = "Unauthorized access, please contact an administrator if you believe this error is incorrect."
+			redirect_to '/'
+		end
+	end
+
+	def destroy
+		@document = Document.find(params[:id])
+		if admin? || (logged_in? && @document.user.id == current_user.id)
+			@document.destroy
+			redirect_to documents_path
 		else
 			flash[:access] = "Unauthorized access, please contact an administrator if you believe this error is incorrect."
 			redirect_to '/'
@@ -49,7 +61,7 @@ class DocumentsController < ApplicationController
 
 	def download
 		@document = Document.find(params[:id])
-		if logged_in? && @document.user.id == current_user.id
+		if admin? || (logged_in? && @document.user.id == current_user.id)
 	  	send_file(@document.media.path)
 	  end
 	end

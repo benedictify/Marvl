@@ -32,6 +32,7 @@
 
 	<% if @user.is_admin? %>
 		<p> Admin</p>
+		<%= link_to "View All Documents", documents_path %>
 	<% end %>
 
 
@@ -58,5 +59,7 @@
 	<% end %>
 <% end %>
 
-<%= link_to "View your document images", documents_path %>
+<% if !admin? %>
+	<%= link_to "View your document images", documents_path %>
+<% end %>
 

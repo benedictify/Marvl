@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :users 
 
-  resources :documents, only: [:new, :create, :index, :show]
+  resources :documents, only: [:new, :create, :index, :show, :destroy]
 
   resources :roles, only: [:new, :create]
 

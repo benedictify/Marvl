@@ -5,6 +5,9 @@
 		<%= @document.name %>
 	</div>
 	<%= link_to "download", download_path(@document) %>
+	<% if admin? %>
+		<%= link_to "delete", document_path(@document), method: :delete %>
+	<% end %>
 </div>
 
 <%= link_to "Back to your documents", documents_path %> | 

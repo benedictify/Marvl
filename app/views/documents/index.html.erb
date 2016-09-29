@@ -16,6 +16,10 @@
 				<div class="image_name">
 					<%= document.name %>
 				</div>
+				<% if admin? %>
+					<%= document.user.full_name %> - 
+					<%= document.user.email %>
+				<% end %>
 				<div>
 					<%= link_to "view document", document_path(document) %>
 				</div>
