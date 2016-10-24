@@ -1,6 +1,6 @@
 <h2>Edit <%= @location.name %>'s location information</h2>
 
-<%= form_for [@location] do |f| %>
+<%= form_for [@location], html: {class: "form-group"} do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %><br>
     <%= f.label :street_address %>
