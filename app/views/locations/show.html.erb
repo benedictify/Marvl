@@ -3,7 +3,11 @@
 <h3><%= @location.name %> - <%= @location.organisation.name %></h3>
 <%= @location.street_address %><br>
 <%= @location.city %>, <%= @location.state %>, <%= @location.zip_code %><br>
-<%= @location.phone %><br>
+<%= @location.phone %><br><br>
+
+<% if admin? || @location.organisation_id == current_user.organisation_id %>
+  <%= link_to "Edit This Location's Information", edit_location_path(@location) %>
+<% end %>
 
 <h3>CPA Members from this Organization</h3>
   <ul>
