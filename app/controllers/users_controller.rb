@@ -45,6 +45,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @organisations = Organisation.all
   end
 
   def create

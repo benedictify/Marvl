@@ -20,8 +20,14 @@
   <%= f.text_field :last_name %><br>
   <%= f.label :email %>
   <%= f.text_field :email %><br>
+  
   <%= f.label :organisation %>
-  <%= f.text_field :organisation_id %>
+  <%= f.select(:organisation_id) do %>
+    <% @organisations.each do |c| -%>
+      <%= content_tag(:option, c.name, value: c.id) %>
+    <% end %>
+  <% end %>
+  
   <%= f.label :password %>
   <%= f.password_field :password, class: 'form-group password'%><br>
   <%= f.submit "Submit" %>
