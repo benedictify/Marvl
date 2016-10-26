@@ -7,7 +7,6 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     @reviews = @category.reviews.order(created_at: :desc).take(3)
     @vote = Vote.new
-    binding.pry
   end
 
 end
