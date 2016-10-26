@@ -3,12 +3,9 @@
 	</div>
 
 <div class="green-border"></div><br>
-
-  	<%= link_to "See all of #{@review.vendor.name}'s reviews", vendor_path(@vendor) %> | 
-  	<%= link_to "See all reviews", reviews_path %> <br><br>
-<% if admin? || @review.user_id == session[:user_id] %>
-  <%= link_to "Edit This Review", edit_vendor_review_path(@vendor, @review) %>
-<% end %>
+    
+    <%= link_to "See all of #{@review.vendor.name}'s reviews", vendor_path(@vendor) %> | 
+    <%= link_to "See all reviews", reviews_path %> <br><br>
 
 </div>
 
