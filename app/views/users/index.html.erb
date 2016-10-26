@@ -3,11 +3,25 @@
 <%= link_to "See our Members on an Interactive Map", locations_path %>
 
 <% @organisations.each do |organisation| %>
-  <h3><%= organisation.name %></h3>
+  
+
+  <% if organisation.website %>
+    
+    <%= link_to(organisation.website) do %>
+      <h3><%= organisation.name %></h3> 
+    <% end %>
+    <p> <%= link_to organisation.website %> </p>
+  
+  <% else %>
+    <h3><%= organisation.name %></h3>
+  <% end %>
   
   <% organisation.locations.each do |location| %>
-    <%= location.name %> | <%= location.phone %><br>
+    <p>    <%= location.name %>  
+    <%= location.phone %>
     <%= location.full_address %>
+
+
   <% end %>
 
   <% if organisation.users.length > 0 %>
