@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/forum', to: 'posts#forum'
   get '/reviews', to: 'reviews#index'
   get '/documents/:id/download', to: 'documents#download', as: :download
+  get '/editpassword', to: 'users#edit_password'
 
   resources :users 
 
