@@ -4,9 +4,8 @@ class Location < ApplicationRecord
   geocoded_by :full_address
   after_validation :geocode
 
-  validates :name, uniqueness: true
   validates_associated :organisation
-  validates :street_address, :city, :state, :zip_code, presence: true
+  validates :name, :street_address, :city, :state, :zip_code, presence: true
 
 
 
