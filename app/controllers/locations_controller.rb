@@ -1,4 +1,18 @@
 class LocationsController < ApplicationController
+  
+  def index
+    # @location1 = Location.last
+    # @location2 = Location.find(124)
+    @locations = Location.all #[@location1, @location2]
+
+    @hash = Gmaps4rails.build_markers(@locations) do |location, marker|
+      if location.latitude != nil && location.longitude != nil
+        marker.lat location.latitude
+        marker.lng location.longitude
+        marker.infowindow location.info_window_link
+      end
+    end
+  end
 
   def new
     @current_org = params[:org]

@@ -34,6 +34,9 @@ gem 'carrierwave', '~> 0.11.2'
 gem 'carrierwave-postgresql-table'
 gem 'mini_magick', '~> 4.5.1'
 gem 'figaro'
+gem 'geocoder'
+gem 'gmaps4rails'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
